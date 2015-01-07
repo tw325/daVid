@@ -20,25 +20,38 @@ def login():
                 return redirect(url_for('login'))
             flash("You've logged in successfully")
             session['username'] = request.form['username']
-            return redirect(url_for('register'))
+            gender = "male"
+            age = 42
+            return render_template("user.html", username = username, gender = gender, age = age)
         else:
             return redirect(url_for('register'))
 
 @app.route("/register",methods=["GET","POST"])
 def register():
+    a = []
+    for num in range(0,123):
+        a.append(num)
     if request.method=="GET":
-        return render_template("register.html")
+        return render_template("register.html", a=a)
     else:
         button = request.form["b"]
         if button == "Login":
             return redirect(url_for('login'))
         username = request.form["username"]
         password = request.form["password"]
-        if not database.addUser(username,password):
-            flash("Registered username, too short username, or too short password.")
+        emailaddress = request.form["emailaddress"]
+        if not database.addUser(username, password, emailaddress, gender, age):
+            flash("There was a problem with what you submitted.")
             return redirect(url_for('signup'))
-        flash("Great! You've registered! Now you can log in.")
+        flash("Great! You're registered! Now you can log in.")
         return redirect(url_for('login'))
+
+@app.route("/user/<username>",methods=["GET","POST"])
+def user(username):
+    if request.method=="GET":
+        return render_template("user.html", username = username)
+    else:
+        return render_template("user.html", username = username)
 
 @app.route('/logout')
 def logout():

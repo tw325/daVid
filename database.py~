@@ -30,3 +30,7 @@ def validateUser(username, password):
         return False
     else:
         return record[0]['password'] == hashlib.sha512(password).hexdigest()
+
+def getGender(username):
+    return users.find({"username":username})
+def getAge(username):

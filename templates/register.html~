@@ -4,6 +4,16 @@
     <title>Signup Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/signin.css">
+    <style>
+      .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      }
+      body{
+      background-image: url("static/upfeathers.png");
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -20,24 +30,11 @@
 	{% endif %}
 	{% endwith %}
 	<input type="text" class="form-control" name="username" placeholder = "Username" autofocus>
+	<br>
 	<input type="password" class="form-control" name="password" placeholder = "Password">
-	
-	<!-- input type="text" class="form-control" name="country" placeholder = "Nation of Origin">
-	<input type="text" class="form-control" name="currency" placeholder = "Currency"-->
 	<br>
-	Country of Origin:
-	<select id="countries" class="form-control" name="country">
-	  {% for nation in nations %}
-	  <option value={{nation[0:3]}}> {{nation}} </option>
-	  {% endfor %}
-	</select>
+	<input type="text" class="form-control" name="emailaddress" placeholder = "Email Address">
 	<br>
-	Currency:
-	<select id="currencies" class="form-control" name="currency">
-	  {% for currency in currencies %}
-	  <option value={{currency[0:3]}}> {{currency}} </option>
-	  {% endfor %}
-	</select>
 	<br>
 	<br>
 	<button class="btn btn-lg btn-primary btn-block" type="submit" name="b" value="Register">Register</button>

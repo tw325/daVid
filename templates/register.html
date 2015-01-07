@@ -4,6 +4,16 @@
     <title>Signup Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/signin.css">
+    <style>
+      .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      }
+      body{
+      background-image: url("static/upfeathers.png");
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -20,7 +30,23 @@
 	{% endif %}
 	{% endwith %}
 	<input type="text" class="form-control" name="username" placeholder = "Username" autofocus>
+	<br>
 	<input type="password" class="form-control" name="password" placeholder = "Password">
+	<br>
+	<input type="text" class="form-control" name="emailaddress" placeholder = "Email Address">
+	<br>
+	Gender:
+	<select id="genders" class="form-control" name="gender">
+	  <option value = "male"> Male </option>
+	  <option value = "female"> Female </option>
+	</select>
+	<br>
+	Age:
+	<select id="ages" class="form-control" name="age">
+	  {% for ages in a %}
+	  <option value={{ages}}> {{ages}} </option>
+	  {% endfor %}
+	</select>
 	<br>
 	<br>
 	<br>
